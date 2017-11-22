@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Qt.ico</file>
+        <file>tiny_cancel.png</file>
+        <file>wb_starter_planet_mysql_52.png</file>
+        <file>Web Schedule.bmp</file>
+    </qresource>
+</RCC>

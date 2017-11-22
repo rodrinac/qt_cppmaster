@@ -1,0 +1,19 @@
+ h2, h3 {
+	width: 100%;
+                text-align: center;
+            }
+            table {
+                width: 60%;
+                max-width: 800px;
+                margin: auto;
+                border: 1px solid green;
+                border-collapse: collapse
+            }           
+            td {
+                width: 50%;
+                background-color: green;
+                padding-left: 20px;
+            }
+            th {
+                background-color: gray;
+            }

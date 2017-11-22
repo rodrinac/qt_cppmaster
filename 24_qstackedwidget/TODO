@@ -1,0 +1,22 @@
+Tela 1:
+    menu {
+        [cadastro]
+        [vendas]
+        [consuta]
+    }
+
+Tela 2:
+    cadastro {
+        [nome]
+        [endereco]
+        [telefone]
+    }
+
+Tela 3:
+    consulta {
+        [nome]
+
+    Tela 4:
+        [info : cliente]
+        [info : vendas^]
+    }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>539</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Test QFileDialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../rc/image.qrc">
+    <normaloff>:/Image/br.png</normaloff>:/Image/br.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTextEdit" name="textEdit"/>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkBox">
+      <property name="text">
+       <string>Salvar como HTML</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>539</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArquivo">
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <addaction name="action_Abrir"/>
+    <addaction name="action_salvar"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="action_Sobre_Qt"/>
+   </widget>
+   <addaction name="menuArquivo"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Abrir"/>
+   <addaction name="action_salvar"/>
+   <addaction name="action_Sobre_Qt"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_Abrir">
+   <property name="icon">
+    <iconset resource="../rc/image.qrc">
+     <normaloff>:/Image/Door.ico</normaloff>:/Image/Door.ico</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Abrir</string>
+   </property>
+  </action>
+  <action name="action_salvar">
+   <property name="icon">
+    <iconset resource="../rc/image.qrc">
+     <normaloff>:/Image/File.ico</normaloff>:/Image/File.ico</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Salvar</string>
+   </property>
+  </action>
+  <action name="action_Sobre_Qt">
+   <property name="icon">
+    <iconset resource="../rc/image.qrc">
+     <normaloff>:/Image/Qt.ico</normaloff>:/Image/Qt.ico</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Sobre Qt</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../rc/image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

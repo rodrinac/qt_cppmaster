@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Image/Door.ico</file>
+        <file>Image/File.ico</file>
+        <file>Image/Qt.ico</file>
+        <file>Image/br.png</file>
+    </qresource>
+</RCC>

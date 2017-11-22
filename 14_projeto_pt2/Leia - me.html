@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<h2>Como gerar o executável distribuível para meu sofware? </h2>
+		<p>O procedimento é muito simples</p>
+		
+		<ol type="1">
+			<li>Compile o executável como "release"</li>
+			<li>Abra o shell do Qt </li>
+			<li>Dê o comando: <code>windeployqt "pasta para o executável" </code>(windows) <br>
+												<code>macdeployqt "pasta para o executável" </code>(Mac Os X) <br>
+												Para Linux entre no site <a href="http://doc.qt.io/qt-5/index.html">Qt Documentation</a> para ver um tutorial rápido.<br>
+												<i>Exemplo:</I> <code>windeployqt "C:\Users\Jose\Desktop\release"</code>
+			<li>Apage as pastas e arquivos inúteis: "translations", "qt5openglw.dll" ...
+			<li>Use um compilador de auto-executáveis como por exemplo <b>Inno Setup Compiler</b></li>
+			<li>Fim :)</li>													
+	</body>
+</html>
