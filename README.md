@@ -1,6 +1,6 @@
 **Playlist: Curso de C++ em Qt**
 
-[Youtube Link](http://youtube.com/cppmaster).
+[Youtube Link](https://www.youtube.com/playlist?list=PL0meOoSt675fF8xBzifArQyGwfZ-39SGA).
 
 #### PT
 
