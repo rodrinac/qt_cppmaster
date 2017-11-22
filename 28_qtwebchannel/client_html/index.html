@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebChannel Client</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/qwebchannel.js"></script>
+    </head>
+    <body>
+        <section class="container text-center">
+            <h2>Lista de Elementos</h2>
+
+            <main class="col-md-offset-3 col-md-6">
+                <table class="table table-hover table-striped" id="itens-table">
+                    <thead>
+                        <tr>
+                            <th>IDX</th><th style="width: 80%; text-align: center">Nome</th><th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="input-group">                     
+                    <input class="form-control" id="input" onkeydown="if (event.keyCode === 13) add()">
+                    <div class="input-group-btn" >
+                        <button class="btn btn-primary" id="bt" onclick="add()">Adicionar</button>
+                    </div>
+                </div>
+
+                <br>
+                <div class="alert alert-danger alert-dismissable" style="display: none" id="log-output">
+                    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <span></span>
+                </div>
+            </main>
+        </section>
+
+        <script>
+
+			var socket = new WebSocket("ws://localhost:12345");
+
+            socket.onclose = function () {
+                console.error("web channel closed");
+            };
+            socket.onerror = function (error) {
+                $("#log-output span").text("Falha ao abrir WebSocket [" + new Date().toLocaleTimeString() + ']');
+
+                $("#log-output").fadeIn('fast');
+            };
+
+            socket.onopen = function () { 
+				window.channel = new QWebChannel(socket, function (channel) {
+					window.servidor = channel.objects.servidor;	
+					
+					fillTable(servidor.itens);
+					
+					servidor.itensChanged.connect ( function () {
+						fillTable(servidor.itens);
+					})
+				});
+			};
+			
+
+            var fillTable = function (itens) {
+                var body = $('#itens-table').find("tbody").eq(0);
+
+                body.html("");
+
+                itens.forEach(function (e, i) {
+                    body.append(createTr(e, i));
+                });
+            };
+
+            var add = function() {
+                var value = $('#input').val().trim();
+
+                if (value != "") {				
+					servidor.adicionarItem(value, function(ok) {
+						if (ok) $('#input').val("");
+						else alert('O item já existe na tabela!');
+					})
+				}
+            }
+
+            var createTr = function (e, i) {
+            	var tr = $("<tr />").append(`<td>${i + 1}</td>`).append(`<td>${e}</td>`);
+
+                var btnDel = $("<button />").click(function () {
+                    servidor.removerItem(e);
+                }).text("Excluir").addClass("btn btn-xs btn-default");
+
+                var delTd = $("<td />").append(btnDel);
+
+                tr.append(delTd);               
+                
+                return tr;
+          }
+			
+		  $(function () {
+              // fillTable(["Abacate", "Maçãs", "Luvas"]); 
+          });
+		</script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    </body>
+</html>
